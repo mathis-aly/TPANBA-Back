@@ -10,17 +10,12 @@ const { platform } = require('node:os');
 
 app.get('/api/player/random/', (req, res) => {
 
-<<<<<<< HEAD
-    const randomIndex = Math.floor(Math.random() * joueur.length)
 
-
-    const randomPlayer = joueur[randomIndex];
-=======
     const randomIndex = Math.floor(Math.random()* joueur.length) // ici ça génére un nombre aléatoire entre 0 et 1 et prend tout les joueurs grâce à joueur.length
  
     
     const randomPlayer = joueur[randomIndex]; // récupère le joueur 
->>>>>>> bf147e31b8f3e7ae13ad3e5a81b84e49daa0ae5d
+
 
     return res.status(200).json(randomPlayer); // envoie la réponse 
 
