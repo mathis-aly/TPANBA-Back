@@ -5,23 +5,31 @@ const test = require('node:test');
 
 const app = express();
 
-const joueur = ({
+const joueur = require('./base.json')
 
-    "nom": "test"
-})
+app.get('/api/player/random/:id', (req, res) => {
 
-app.get('/api/player/random', (req,res) => {
-    return res.send("hello world");
+    if (!req.params.id) {
+        return res.status(404).json({ message: "Param not found" });
+    }
+
+    const result = joueur.find((user) => user.id == req.params.id);
+
+    if (!result) {
+        return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json(result);
 });
 
 
-app.post('/api/player/check', (req,res) => {
 
-    if (!joueur)(
+app.post('/api/player/check', (req, res) => {
+
+    if (!joueur) (
         res.status(404).json("message : joueur non trouvé")
     )
-    
-    return res.status(200).json({test})
+
+    return res.status(200).json({ test })
 });
 
 app.listen(3000, () => {
