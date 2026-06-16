@@ -7,7 +7,16 @@ const app = express();
 
 const joueur = require('./base.json')
 
-app.get('/api/player/random/:id', (req, res) => {
+app.get('/api/player/random/', (req, res) => {
+
+    const randomIndex = Math.floor(Math.random()* joueur.length)
+
+    
+    const randomPlayer = joueur[randomIndex];
+
+    return res.status(200).json(randomPlayer);
+
+
 
     if (!req.params.id) {
         return res.status(404).json({ message: "Param not found" });
