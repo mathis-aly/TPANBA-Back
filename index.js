@@ -18,16 +18,6 @@ app.get('/api/player/random/', (req, res) => {
 
 
 
-    if (!req.params.id) {
-        return res.status(404).json({ message: "Param not found" });
-    }
-
-    const result = joueur.find((user) => user.id == req.params.id);
-
-    if (!result) {
-        return res.status(404).json({ message: "User not found" });
-    }
-    return res.status(200).json(result);
 });
 
 
